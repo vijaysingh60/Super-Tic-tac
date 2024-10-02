@@ -72,7 +72,7 @@ function Multiplayer() {
             {win === "X" && <div className="text-6xl font-extrabold text-yellow-200 bg-gray-900 p-6 rounded-xl shadow-xl animate-pulse">X wins!</div>}
             {win === "O" && <div className="text-6xl font-extrabold text-yellow-200 bg-gray-900 p-6 rounded-xl shadow-xl animate-pulse">O wins!</div>}
             {win === "" && (<>
-                <div className='text-xl font-semibold text-slate-900  p-2 absolute top-2 left-2'>Me :  {playerRole}</div>
+                <div className='text-xl font-semibold text-slate-900  p-2 absolute top-2 left-2'>Me :  {playerRole===""?"Spectetor":playerRole}</div>
                 <div className='text-6xl font-extrabold text-yellow-200  p-6 '>{turn}'s turn</div>
                 <div className='game grid grid-cols-3 gap-2'>
                     {classList.map((item, idx) => (
