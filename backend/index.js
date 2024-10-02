@@ -13,8 +13,10 @@ app.use(express.json());
 const io = new Server(server,{
     cors:{
         origin : "https://super-tic-tac-client.vercel.app",
-        methods : ["GET","POST"]
-    }
+        methods : ["GET","POST"],
+        allowedHeaders: ["Access-Control-Allow-Headers", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"],
+    },
+    transports: ["websocket", "polling"]
 });
 
 const player = {};
