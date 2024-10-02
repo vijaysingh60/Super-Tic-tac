@@ -3,9 +3,7 @@ import { useEffect, useState } from 'react';
 import Tic from './Tic';
 import io from 'socket.io-client'
 
-const socket = io.connect("https://super-tic-tac-server.vercel.app",{
-    transports: ["websocket"]
-})
+const socket = io.connect("https://super-tic-tac-server.vercel.app")
 
 function Multiplayer() {
     

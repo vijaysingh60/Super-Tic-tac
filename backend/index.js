@@ -16,7 +16,6 @@ const io = new Server(server,{
         methods : ["GET","POST"],
         allowedHeaders: ["Access-Control-Allow-Headers", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"],
     },
-    transports: ["websocket", "polling"]
 });
 
 const player = {};
