@@ -12,7 +12,7 @@ app.use(express.json());
 
 const io = new Server(server,{
     cors:{
-        origin : "https://super-tic-tac-client-128bvk8hv-vijaysingh60s-projects.vercel.app/",
+        origin : "https://super-tic-tac-client.vercel.app/",
         methods : ["GET","POST"]
     }
 });
