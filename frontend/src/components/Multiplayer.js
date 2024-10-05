@@ -104,6 +104,7 @@ function Multiplayer() {
                                         finalO={finalO} finalX={finalX}
                                         socket = {socket}
                                         edge = {edge}
+                                        setEdge = {setEdge}
                                     />
                                 </div>
                             )}

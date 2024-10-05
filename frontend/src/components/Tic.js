@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function Tic({id,prevBlock,setPrevBlock,turn,setTurn,setFinalO,setFinalX,finalO,finalX,playerRole,socket,edge}) {
+function Tic({id,prevBlock,setPrevBlock,turn,setTurn,setFinalO,setFinalX,finalO,finalX,playerRole,socket,edge,setEdge}) {
 
     const [x,setX] = useState([]);
     const [o,setO] = useState([]);
@@ -47,7 +47,10 @@ function Tic({id,prevBlock,setPrevBlock,turn,setTurn,setFinalO,setFinalX,finalO,
     useEffect(()=>{
         if(prevBlock.charAt(0) == id || edge.charAt(0) == id){
             let a = prevBlock.charAt(1);
-            if(prevBlock === "")a = edge.charAt(1);
+            if(prevBlock === ""){
+                a = edge.charAt(1);
+                setEdge("");
+            }
             if(turn ==="X"){
                 setO([...o,a]);
                 win("o",o,a)
