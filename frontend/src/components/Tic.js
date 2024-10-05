@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function Tic({id,prevBlock,setPrevBlock,turn,setTurn,setFinalO,setFinalX,finalO,finalX,playerRole,socket}) {
+function Tic({id,prevBlock,setPrevBlock,turn,setTurn,setFinalO,setFinalX,finalO,finalX,playerRole,socket,edge}) {
 
     const [x,setX] = useState([]);
     const [o,setO] = useState([]);
@@ -28,14 +28,16 @@ function Tic({id,prevBlock,setPrevBlock,turn,setTurn,setFinalO,setFinalX,finalO,
         const logic = [["1","2","3"],["4","5","6"],["7","8","9"],["1","4","7"],["2","5","8"],["3","6","9"],["1","5","9"],["3","5","7"]];
         
         let arr = [...arr1,last];
-        
+     
+
         logic.forEach((list)=>{
             if(arr.includes(list[0]) && arr.includes(list[1]) && arr.includes(list[2])){
-                
-                if(t=="o")setFinalO([...finalO,id]);
+           
+                if(t==="o")setFinalO([...finalO,id]);
                 else setFinalX([...finalX,id]);
-
-                if(id === parseInt(arr[arr.length-1]))setPrevBlock("")
+                if(id === parseInt(arr[arr.length-1])){
+                    setPrevBlock("")
+                }
                 
             }
             
@@ -43,17 +45,19 @@ function Tic({id,prevBlock,setPrevBlock,turn,setTurn,setFinalO,setFinalX,finalO,
     }
 
     useEffect(()=>{
-        if(prevBlock !=="" && prevBlock.charAt(0) == id ){
+        if(prevBlock.charAt(0) == id || edge.charAt(0) == id){
+            let a = prevBlock.charAt(1);
+            if(prevBlock === "")a = edge.charAt(1);
             if(turn ==="X"){
-                win("o",o,prevBlock.charAt(1))
-                setO([...o,prevBlock.charAt(1)]);
+                setO([...o,a]);
+                win("o",o,a)
             }
             else{
-                win("x",x,prevBlock.charAt(1)) 
-                setX([...x,prevBlock.charAt(1)]);
+                setX([...x,a]);
+                win("x",x,a) 
             }
         }
-    },[prevBlock])
+    },[prevBlock,edge])
 
     return (
 

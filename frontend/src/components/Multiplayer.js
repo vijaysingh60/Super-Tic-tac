@@ -8,6 +8,7 @@ const socket = io.connect("wss://super-tic-tac.onrender.com")
 function Multiplayer() {
     
     const [finalO,setFinalO] = useState([]);
+    const [edge,setEdge] = useState("");
     const [finalX,setFinalX] = useState([]);
     const [playerRole,setPlayerRole] = useState("");
     const [prevBlock,setPrevBlock] = useState("")
@@ -32,8 +33,12 @@ function Multiplayer() {
             
             //updating prev block for all
             if(finalO.includes(parseInt(blockId.charAt(1))) || 
-            finalX.includes(parseInt(blockId.charAt(1)))) setPrevBlock("");
+            finalX.includes(parseInt(blockId.charAt(1)))){
+                setEdge(blockId);
+                 setPrevBlock("");
+            }
             else setPrevBlock(blockId);
+
 
             //changing turn
             setTurn(playerRole1 === "X"?"O":"X");
@@ -98,6 +103,7 @@ function Multiplayer() {
                                         playerRole = {playerRole}
                                         finalO={finalO} finalX={finalX}
                                         socket = {socket}
+                                        edge = {edge}
                                     />
                                 </div>
                             )}
